@@ -1,0 +1,21 @@
+{
+  "type": "panel",
+  "name": "Table Heatmap",
+  "id": "id-table-heatmap-plugin",
+  "dataFormats": ["table"],
+  "info": {
+    "description": "Table Heatmap",
+    "author": {
+      "name": "Nam Le"
+    },
+    "keywords": ["heatmap", "table"],
+    "screenshots": [],
+    "version": "1.0.0",
+    "updated": "2020-04-22"
+  },
+
+  "dependencies": {
+    "grafanaVersion": "6.3.x",
+    "plugins": []
+  }
+}
