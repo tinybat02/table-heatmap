@@ -24,3 +24,5 @@ export const hours = [
   '22',
   '23',
 ];
+
+export const weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];

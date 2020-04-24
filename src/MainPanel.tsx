@@ -8,26 +8,24 @@ import { hours } from './config/constant';
 interface Props extends PanelProps<PanelOptions> {}
 interface State {
   data: Array<DayObj> | null;
-  keys: string[] | null;
 }
 
 export class MainPanel extends PureComponent<Props, State> {
   state: State = {
     data: null,
-    keys: null,
   };
 
   componentDidMount() {
     const fields = this.props.data.series[0].fields as FieldBuffer[];
-    const { data, keys } = processData(this.props.data.series[0].length, fields);
-    this.setState({ data, keys });
+    const { data } = processData(this.props.data.series[0].length, fields);
+    this.setState({ data });
   }
 
   render() {
     const { width, height } = this.props;
-    const { data, keys } = this.state;
+    const { data } = this.state;
 
-    if (!data || !keys) {
+    if (!data) {
       return <div />;
     }
 

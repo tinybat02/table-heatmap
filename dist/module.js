@@ -39383,22 +39383,16 @@ function (_super) {
     var _this = _super !== null && _super.apply(this, arguments) || this;
 
     _this.state = {
-      data: null,
-      keys: null
+      data: null
     };
     return _this;
   }
 
   MainPanel.prototype.componentDidMount = function () {
     var fields = this.props.data.series[0].fields;
-
-    var _a = Object(_utils_helperFunc__WEBPACK_IMPORTED_MODULE_3__["processData"])(this.props.data.series[0].length, fields),
-        data = _a.data,
-        keys = _a.keys;
-
+    var data = Object(_utils_helperFunc__WEBPACK_IMPORTED_MODULE_3__["processData"])(this.props.data.series[0].length, fields).data;
     this.setState({
-      data: data,
-      keys: keys
+      data: data
     });
   };
 
@@ -39406,11 +39400,9 @@ function (_super) {
     var _a = this.props,
         width = _a.width,
         height = _a.height;
-    var _b = this.state,
-        data = _b.data,
-        keys = _b.keys;
+    var data = this.state.data;
 
-    if (!data || !keys) {
+    if (!data) {
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null);
     }
 
@@ -39492,13 +39484,15 @@ function (_super) {
 /*!****************************!*\
   !*** ./config/constant.ts ***!
   \****************************/
-/*! exports provided: hours */
+/*! exports provided: hours, weekdays */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hours", function() { return hours; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "weekdays", function() { return weekdays; });
 var hours = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'];
+var weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
 /***/ }),
 
@@ -39550,26 +39544,27 @@ var defaults = {};
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "processData", function() { return processData; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "../node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _config_constant__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../config/constant */ "./config/constant.ts");
 
 var processData = function processData(length, fields) {
-  var keys = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__spread"])(new Set(fields[1].values.buffer));
-
-  var convertedData = [{
-    date: 'Mon'
-  }, {
-    date: 'Tue'
-  }, {
-    date: 'Wed'
-  }, {
-    date: 'Thu'
-  }, {
-    date: 'Fri'
-  }, {
-    date: 'Sat'
-  }, {
-    date: 'Sun'
-  }];
+  /*   const convertedData: DayObj[] = [
+    { date: 'Mon' },
+    { date: 'Tue' },
+    { date: 'Wed' },
+    { date: 'Thu' },
+    { date: 'Fri' },
+    { date: 'Sat' },
+    { date: 'Sun' },
+  ]; */
+  var convertedData = _config_constant__WEBPACK_IMPORTED_MODULE_0__["weekdays"].map(function (weekday) {
+    var obj = {
+      date: weekday
+    };
+    _config_constant__WEBPACK_IMPORTED_MODULE_0__["hours"].map(function (hour) {
+      obj[hour] = 0;
+    });
+    return obj;
+  });
 
   var _loop_1 = function _loop_1(i) {
     var dayObj = convertedData.find(function (element) {
@@ -39583,8 +39578,7 @@ var processData = function processData(length, fields) {
   }
 
   return {
-    data: convertedData,
-    keys: keys
+    data: convertedData
   };
 };
 
