@@ -1,11 +1,17 @@
 import { FieldBuffer, DayObj } from '../types';
 
 export const processData = (length: number, fields: FieldBuffer[]) => {
-  const date = [...new Set(fields[0].values.buffer)] as Array<string>;
-
   const keys = [...new Set(fields[1].values.buffer)] as Array<string>;
 
-  const convertedData: DayObj[] = date.map((item: string) => ({ date: item }));
+  const convertedData: DayObj[] = [
+    { date: 'Mon' },
+    { date: 'Tue' },
+    { date: 'Wed' },
+    { date: 'Thu' },
+    { date: 'Fri' },
+    { date: 'Sat' },
+    { date: 'Sun' },
+  ];
 
   for (let i = 0; i < length; i++) {
     const dayObj = convertedData.find(element => element.date === fields[0].values.buffer[i]);

@@ -3,6 +3,7 @@ import { PanelProps } from '@grafana/data';
 import { PanelOptions, FieldBuffer, DayObj } from 'types';
 import { ResponsiveHeatMap } from '@nivo/heatmap';
 import { processData } from './utils/helperFunc';
+import { hours } from './config/constant';
 
 interface Props extends PanelProps<PanelOptions> {}
 interface State {
@@ -40,7 +41,7 @@ export class MainPanel extends PureComponent<Props, State> {
       >
         <ResponsiveHeatMap
           data={data}
-          keys={keys}
+          keys={hours}
           indexBy="date"
           margin={{ top: 100, right: 60, bottom: 60, left: 60 }}
           forceSquare={true}
@@ -83,28 +84,3 @@ export class MainPanel extends PureComponent<Props, State> {
     );
   }
 }
-
-/* const data1 = [
-  {
-    date: '20-04-2020',
-    '2 PM': 71,
-    '3 PM': 19,
-    '4 PM': 10,
-    '5 PM': 75,
-  },
-  {
-    date: '21-04-2020',
-    '2 PM': 28,
-    '3 PM': 24,
-    '4 PM': 5,
-    '5 PM': 19,
-  },
-  {
-    date: '22-04-2020',
-    '2 PM': 59,
-    '3 PM': 76,
-    '4 PM': 66,
-    '5 PM': 48,
-  },
-];
- */

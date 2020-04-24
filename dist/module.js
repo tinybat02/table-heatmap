@@ -39367,6 +39367,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _nivo_heatmap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @nivo/heatmap */ "../node_modules/@nivo/heatmap/dist/nivo-heatmap.esm.js");
 /* harmony import */ var _utils_helperFunc__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils/helperFunc */ "./utils/helperFunc.ts");
+/* harmony import */ var _config_constant__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./config/constant */ "./config/constant.ts");
+
 
 
 
@@ -39420,7 +39422,7 @@ function (_super) {
       }
     }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_nivo_heatmap__WEBPACK_IMPORTED_MODULE_2__["ResponsiveHeatMap"], {
       data: data,
-      keys: keys,
+      keys: _config_constant__WEBPACK_IMPORTED_MODULE_4__["hours"],
       indexBy: "date",
       margin: {
         top: 100,
@@ -39483,30 +39485,20 @@ function (_super) {
 }(react__WEBPACK_IMPORTED_MODULE_1__["PureComponent"]);
 
 
-/* const data1 = [
-  {
-    date: '20-04-2020',
-    '2 PM': 71,
-    '3 PM': 19,
-    '4 PM': 10,
-    '5 PM': 75,
-  },
-  {
-    date: '21-04-2020',
-    '2 PM': 28,
-    '3 PM': 24,
-    '4 PM': 5,
-    '5 PM': 19,
-  },
-  {
-    date: '22-04-2020',
-    '2 PM': 59,
-    '3 PM': 76,
-    '4 PM': 66,
-    '5 PM': 48,
-  },
-];
- */
+
+/***/ }),
+
+/***/ "./config/constant.ts":
+/*!****************************!*\
+  !*** ./config/constant.ts ***!
+  \****************************/
+/*! exports provided: hours */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hours", function() { return hours; });
+var hours = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'];
 
 /***/ }),
 
@@ -39561,15 +39553,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "../node_modules/tslib/tslib.es6.js");
 
 var processData = function processData(length, fields) {
-  var date = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__spread"])(new Set(fields[0].values.buffer));
-
   var keys = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__spread"])(new Set(fields[1].values.buffer));
 
-  var convertedData = date.map(function (item) {
-    return {
-      date: item
-    };
-  });
+  var convertedData = [{
+    date: 'Mon'
+  }, {
+    date: 'Tue'
+  }, {
+    date: 'Wed'
+  }, {
+    date: 'Thu'
+  }, {
+    date: 'Fri'
+  }, {
+    date: 'Sat'
+  }, {
+    date: 'Sun'
+  }];
 
   var _loop_1 = function _loop_1(i) {
     var dayObj = convertedData.find(function (element) {
