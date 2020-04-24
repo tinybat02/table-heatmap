@@ -39396,6 +39396,16 @@ function (_super) {
     });
   };
 
+  MainPanel.prototype.componentDidUpdate = function (prevProps) {
+    if (prevProps.data.series[0] !== this.props.data.series[0]) {
+      var newFields = this.props.data.series[0].fields;
+      var data = Object(_utils_helperFunc__WEBPACK_IMPORTED_MODULE_3__["processData"])(this.props.data.series[0].length, newFields).data;
+      this.setState({
+        data: data
+      });
+    }
+  };
+
   MainPanel.prototype.render = function () {
     var _a = this.props,
         width = _a.width,

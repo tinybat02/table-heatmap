@@ -21,6 +21,15 @@ export class MainPanel extends PureComponent<Props, State> {
     this.setState({ data });
   }
 
+  componentDidUpdate(prevProps: Props) {
+    if (prevProps.data.series[0] !== this.props.data.series[0]) {
+      const newFields = this.props.data.series[0].fields as FieldBuffer[];
+
+      const { data } = processData(this.props.data.series[0].length, newFields);
+      this.setState({ data });
+    }
+  }
+
   render() {
     const { width, height } = this.props;
     const { data } = this.state;
