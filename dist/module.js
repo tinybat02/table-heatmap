@@ -39547,21 +39547,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _config_constant__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../config/constant */ "./config/constant.ts");
 
 var processData = function processData(length, fields) {
-  /*   const convertedData: DayObj[] = [
-    { date: 'Mon' },
-    { date: 'Tue' },
-    { date: 'Wed' },
-    { date: 'Thu' },
-    { date: 'Fri' },
-    { date: 'Sat' },
-    { date: 'Sun' },
-  ]; */
   var convertedData = _config_constant__WEBPACK_IMPORTED_MODULE_0__["weekdays"].map(function (weekday) {
     var obj = {
       date: weekday
     };
     _config_constant__WEBPACK_IMPORTED_MODULE_0__["hours"].map(function (hour) {
-      obj[hour] = 0;
+      obj[hour] = undefined;
     });
     return obj;
   });

@@ -2,20 +2,10 @@ import { FieldBuffer, DayObj } from '../types';
 import { hours, weekdays } from '../config/constant';
 
 export const processData = (length: number, fields: FieldBuffer[]) => {
-  /*   const convertedData: DayObj[] = [
-    { date: 'Mon' },
-    { date: 'Tue' },
-    { date: 'Wed' },
-    { date: 'Thu' },
-    { date: 'Fri' },
-    { date: 'Sat' },
-    { date: 'Sun' },
-  ]; */
-
   const convertedData = weekdays.map(weekday => {
     const obj: DayObj = { date: weekday };
     hours.map(hour => {
-      obj[hour] = 0;
+      obj[hour] = undefined;
     });
     return obj;
   });
