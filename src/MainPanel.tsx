@@ -50,7 +50,7 @@ export class MainPanel extends PureComponent<Props, State> {
           data={data}
           keys={hours}
           indexBy="date"
-          margin={{ top: 100, right: 60, bottom: 60, left: 60 }}
+          margin={{ top: 10, right: 20, bottom: 40, left: 20 }}
           forceSquare={true}
           axisTop={null}
           axisRight={null}
